@@ -1,0 +1,169 @@
+return {
+  {
+    "stevearc/conform.nvim",
+    -- event = 'BufWritePre', -- uncomment for format on save
+    config = function()
+      require "configs.conform"
+    end,
+  },
+
+  -- These are some examples, uncomment them if you want to see them work!
+  {
+    "smoka7/hop.nvim",
+    opts = {
+      multi_windows = true,
+      keys = "etovxqpdygfblzhckisuran",
+      uppercase_labels = true,
+    },
+    keys = {
+      {
+        "<leader>fj",
+        function()
+          require("hop").hint_words()
+        end,
+        mode = { "n", "x", "o" },
+        desc = "hop",
+      },
+    },
+  },
+
+  {
+    "nvim-tree/nvim-tree.lua",
+    lazy = false,
+    cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+    opts = function()
+      return require "nvchad.configs.nvimtree"
+    end,
+    config = function(_, opts)
+      require("nvim-tree").setup(opts)
+    end,
+  },
+
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      require("nvchad.configs.lspconfig").defaults()
+      require "configs.lspconfig"
+    end,
+  },
+
+  {
+    "stevearc/dressing.nvim",
+    config = function()
+      require("dressing").setup {
+        input = {
+          enabled = true,
+        },
+        select = {
+          enabled = true,
+        },
+      }
+    end,
+  },
+
+  {
+
+    "nvim-telescope/telescope.nvim",
+    config = function()
+      require("telescope").setup {
+        extensions = {
+          ["ui-select"] = {
+            require("telescope.themes").get_dropdown {
+              -- even more opts
+            },
+
+            -- pseudo code / specification for writing custom displays, like the one
+            -- for "codeactions"
+            -- specific_opts = {
+            --   [kind] = {
+            --     make_indexed = function(items) -> indexed_items, width,
+            --     make_displayer = function(widths) -> displayer
+            --     make_display = function(displayer) -> function(e)
+            --     make_ordinal = function(e) -> string
+            --   },
+            --   -- for example to disable the custom builtin "codeactions" display
+            --      do the following
+            --   codeactions = false,
+            -- }
+          },
+        },
+      }
+      require("telescope").load_extension "ui-select"
+    end,
+  },
+
+  { "nvim-telescope/telescope-ui-select.nvim", lazy = false },
+
+  --
+  {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
+        "lua-language-server",
+        "html-lsp",
+        "css-lsp",
+        "prettier",
+        "stylua",
+        "shellcheck",
+        "shfmt",
+        "flake8",
+        "diagnostic-languageserver",
+        "dockerfile-language-server",
+        "eslint-lsp",
+        "goimports",
+        "goimports-reviser",
+        "gopls",
+        "js-debug-adapter",
+        "json-lsp",
+        "lua-language-server",
+        "tailwindcss-language-server",
+        -- "typescript-language-server",
+        "vue-language-server",
+      },
+    },
+  },
+  -- react 注释
+  {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    lazy = false,
+  },
+  -- 注释
+  {
+    "numToStr/Comment.nvim",
+    lazy = false,
+    config = function()
+      require("Comment").setup {
+        pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+      }
+    end,
+  },
+  --
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vim",
+        "lua",
+        "vimdoc",
+        "html",
+        "css",
+      },
+    },
+  },
+
+  -- 标签自闭合
+  {
+    "windwp/nvim-ts-autotag",
+    lazy = false,
+    config = function()
+      require("nvim-ts-autotag").setup {
+        opts = {
+          -- Defaults
+          enable_close = true, -- Auto close tags
+          enable_rename = true, -- Auto rename pairs of tags
+          enable_close_on_slash = false, -- Auto close on trailing </
+        },
+      }
+    end,
+  },
+}
