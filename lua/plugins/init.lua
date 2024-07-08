@@ -35,7 +35,11 @@ return {
       return require "nvchad.configs.nvimtree"
     end,
     config = function(_, opts)
-      require("nvim-tree").setup(opts)
+      require("nvim-tree").setup {
+        filters = {
+          git_ignored = false,
+        },
+      }
     end,
   },
 
@@ -117,7 +121,6 @@ return {
         "json-lsp",
         "lua-language-server",
         "tailwindcss-language-server",
-        -- "typescript-language-server",
         "vue-language-server",
       },
     },
@@ -165,5 +168,19 @@ return {
         },
       }
     end,
+  },
+
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
   },
 }

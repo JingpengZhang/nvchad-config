@@ -13,6 +13,7 @@ local options = {
     markdown = { "prettier" },
     graphql = { "prettier" },
     python = { "isort", "black" },
+    vue = {"prettier"}
   },
 
   format_on_save = {
