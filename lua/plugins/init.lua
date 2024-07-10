@@ -122,6 +122,7 @@ return {
         "lua-language-server",
         "tailwindcss-language-server",
         "vue-language-server",
+        "vtsls"
       },
     },
   },
