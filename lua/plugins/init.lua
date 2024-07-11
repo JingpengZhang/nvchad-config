@@ -2,6 +2,7 @@ return {
   {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save
+    lazy = false,
     config = function()
       require "configs.conform"
     end,
@@ -182,5 +183,33 @@ return {
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
     },
+  },
+  {
+    "f-person/git-blame.nvim",
+    lazy = false,
+    config = function()
+      require("gitblame").setup {
+        enable = true,
+      }
+    end,
+  },
+  {
+    "rareitems/printer.nvim",
+    lazy = false,
+    config = function()
+      require("printer").setup {
+        keymap = "gp", -- Plugin doesn't have any keymaps by default
+      }
+    end,
+  },
+  {
+    "rmagatti/goto-preview",
+    lazy = false,
+    event = "BufEnter",
+    config = function()
+      require("goto-preview").setup {
+        default_mappings = true,
+      }
+    end,
   },
 }
