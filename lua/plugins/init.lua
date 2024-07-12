@@ -123,7 +123,7 @@ return {
         "lua-language-server",
         "tailwindcss-language-server",
         "vue-language-server",
-        "vtsls"
+        "vtsls",
       },
     },
   },
@@ -211,6 +211,12 @@ return {
       require("goto-preview").setup {
         default_mappings = true,
       }
+    end,
+  },
+  {
+    "sindrets/diffview.nvim",
+    config = function()
+      require("diffview").setup {}
     end,
   },
 }

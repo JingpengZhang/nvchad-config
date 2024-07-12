@@ -16,9 +16,10 @@ wk.register({
     s = { "<cmd>Telescope current_buffer_fuzzy_find<CR>", "Search String In Current Buffer" },
   },
   g = {
+    name = "Git",
     d = {
-      "<cmd>Telescope lsp_definitions<CR>",
-      "Go to definitions",
+      "<cmd>DiffviewOpen<CR>",
+      "Open Diffview",
     },
   },
   c = {
