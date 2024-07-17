@@ -17,6 +17,12 @@ wk.register({
   },
   g = {
     name = "Git",
+    h = {
+      function()
+        vim.lsp.buf.hover()
+      end,
+      "View Type Difinition",
+    },
     d = {
       "<cmd>DiffviewOpen<CR>",
       "Open Diffview",
@@ -67,3 +73,7 @@ map("n", "<leader>wq", "<C-w>q", {
 map("n", "<leader>ws", "<C-w>v", {
   desc = "Split window to Horizontal",
 })
+
+map("n", "gh", function()
+  vim.lsp.buf.hover()
+end, { desc = "View Type Difinition" })
