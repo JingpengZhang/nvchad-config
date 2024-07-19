@@ -117,5 +117,10 @@ map({ "n", "t" }, "<C-/>", function()
 end)
 
 map({ "n", "t" }, "<C-g>", function()
-  require("nvchad.term").toggle { pos = "float", id = "floatTermForLazygit", cmd = "lazygit", float_opts = nvTermFloatOpts }
+  require("nvchad.term").toggle {
+    pos = "float",
+    id = "floatTermForLazygit",
+    cmd = "lazygit",
+    float_opts = nvTermFloatOpts,
+  }
 end)
