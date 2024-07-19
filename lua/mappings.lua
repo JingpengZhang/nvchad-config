@@ -100,3 +100,22 @@ map("n", "]e", function()
     severity = vim.diagnostic.severity.ERROR,
   }
 end)
+
+-- terminal
+local nvTermFloatOpts = {
+  width = 0.7,
+  height = 0.7,
+  row = 0.15,
+  col = 0.15,
+}
+map({ "n", "t" }, "<C-/>", function()
+  require("nvchad.term").toggle {
+    pos = "float",
+    id = "floatTerm",
+    float_opts = nvTermFloatOpts,
+  }
+end)
+
+map({ "n", "t" }, "<C-g>", function()
+  require("nvchad.term").toggle { pos = "float", id = "floatTermForLazygit", cmd = "lazygit", float_opts = nvTermFloatOpts }
+end)
