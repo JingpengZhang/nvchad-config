@@ -3,6 +3,13 @@ require "nvchad.mappings"
 local wk = require "which-key"
 
 wk.register({
+  n = {
+    name = "NvimTree",
+    t = {
+      "<cmd>NvimTreeToggle<CR>",
+      "Open or close the tree.",
+    },
+  },
   s = {
     name = "Search",
     a = {
@@ -77,3 +84,19 @@ map("n", "<leader>ws", "<C-w>v", {
 map("n", "gh", function()
   vim.lsp.buf.hover()
 end, { desc = "View Type Difinition" })
+
+-- go to next error
+map("n", "[e", function()
+  vim.diagnostic.goto_next {
+    float = true,
+    severity = vim.diagnostic.severity.ERROR,
+  }
+end)
+
+--go to prev error
+map("n", "]e", function()
+  vim.diagnostic.goto_prev {
+    float = true,
+    severity = vim.diagnostic.severity.ERROR,
+  }
+end)
