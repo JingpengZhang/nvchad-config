@@ -102,17 +102,16 @@ map("n", "]e", function()
 end)
 
 -- terminal
-local nvTermFloatOpts = {
-  width = 0.7,
-  height = 0.7,
-  row = 0.15,
-  col = 0.15,
-}
 map({ "n", "t" }, "<C-/>", function()
   require("nvchad.term").toggle {
     pos = "float",
     id = "floatTerm",
-    float_opts = nvTermFloatOpts,
+    float_opts = {
+      width = 0.7,
+      height = 0.7,
+      row = 0.15,
+      col = 0.15,
+    },
   }
 end)
 
@@ -121,6 +120,9 @@ map({ "n", "t" }, "<C-g>", function()
     pos = "float",
     id = "floatTermForLazygit",
     cmd = "lazygit",
-    float_opts = nvTermFloatOpts,
+    float_opts = {
+      width = 1,
+      height = 1,
+    },
   }
 end)
