@@ -1,8 +1,7 @@
 return {
   {
     "stevearc/conform.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
-    lazy = false,
+    event = "BufWritePre", -- uncomment for format on save
     config = function()
       require "configs.conform"
     end,
@@ -54,6 +53,7 @@ return {
 
   {
     "stevearc/dressing.nvim",
+    event = "VeryLazy",
     config = function()
       require("dressing").setup {
         input = {
@@ -97,7 +97,7 @@ return {
     end,
   },
 
-  { "nvim-telescope/telescope-ui-select.nvim", lazy = false },
+  { "nvim-telescope/telescope-ui-select.nvim", event = "VeryLazy" },
 
   --
   {
@@ -130,12 +130,12 @@ return {
   -- react 注释
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
-    lazy = false,
+    event = "VeryLazy",
   },
   -- 注释
   {
     "numToStr/Comment.nvim",
-    lazy = false,
+    event = "VeryLazy",
     config = function()
       require("Comment").setup {
         pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
