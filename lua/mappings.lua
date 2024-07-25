@@ -126,3 +126,8 @@ map({ "n", "t" }, "<C-g>", function()
     },
   }
 end)
+
+-- hop
+map({ "n" }, "<leader>j", function()
+  require("hop").hint_words()
+end, { desc = "Jump" })
