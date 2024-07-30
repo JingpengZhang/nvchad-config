@@ -1,47 +1,5 @@
 require "nvchad.mappings"
-
-local wk = require "which-key"
-
-wk.register({
-  n = {
-    name = "NvimTree",
-    t = {
-      "<cmd>NvimTreeToggle<CR>",
-      "Open or close the tree.",
-    },
-  },
-  s = {
-    name = "Search",
-    a = {
-      "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
-      "Search File In All Files (Include Hidden File)",
-    },
-    b = { "<cmd>Telescope buffers<CR>", "Search Buffer In Opening Buffers" },
-    f = { "<cmd>Telescope find_files<cr>", "Search File In Files" },
-    g = { "<cmd>Telescope live_grep<CR>", "Search String In Live Grep" },
-    o = { "<cmd>Telescope oldfiles<CR>", "Search File In Old Files" },
-    s = { "<cmd>Telescope current_buffer_fuzzy_find<CR>", "Search String In Current Buffer" },
-  },
-  g = {
-    name = "Git",
-    h = {
-      function()
-        vim.lsp.buf.hover()
-      end,
-      "View Type Difinition",
-    },
-    d = {
-      "<cmd>DiffviewOpen<CR>",
-      "Open Diffview",
-    },
-  },
-  c = {
-    name = "Code",
-  },
-  z = {
-    name = "vvv",
-  },
-}, { prefix = "<leader>" })
+require "configs.which-key"
 
 -- add yours here
 local map = vim.keymap.set
