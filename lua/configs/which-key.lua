@@ -1,6 +1,23 @@
 local wk = require "which-key"
 
 wk.register({
+  b = {
+    name = "Buffer",
+    o = {
+      function()
+        local bufs = vim.api.nvim_list_bufs()
+        local current_buf = vim.api.nvim_get_current_buf()
+        for _, i in ipairs(bufs) do
+          if i ~= current_buf then
+            vim.api.nvim_buf_delete(i, {})
+          end
+        end
+
+        require("nvim-tree.api").tree.toggle { focus = false, find_file = true }
+      end,
+      "Close Other Buffes",
+    },
+  },
   n = {
     name = "NvimTree",
     t = {
@@ -28,9 +45,21 @@ wk.register({
       end,
       "View Type Difinition",
     },
-    d = {
+    v = {
       "<cmd>DiffviewOpen<CR>",
       "Open Diffview",
+    },
+    c = {
+      "<cmd>DiffviewClose<CR>",
+      "Close Diffview",
+    },
+    t = {
+      "<cmd>DiffviewToggleFiles<CR>",
+      "Toggle the file panel",
+    },
+    r = {
+      "<cmd>DiffviewRefresh<CR>",
+      "Update stats and entries in the file list of the current Diffview",
     },
   },
   c = {
@@ -54,6 +83,7 @@ wk.register({
           command = "typescript.organizeImports",
           arguments = { vim.api.nvim_buf_get_name(0) },
         }
+        require("conform").format { lsp_format = "fallback", bufnr = 0 }
       end,
       "Organize Imports",
     },

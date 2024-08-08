@@ -124,6 +124,7 @@ return {
         "tailwindcss-language-server",
         "vue-language-server",
         "vtsls",
+        "unocss-language-server",
       },
     },
   },
@@ -215,6 +216,7 @@ return {
   },
   {
     "sindrets/diffview.nvim",
+    event = "VeryLazy",
     config = function()
       require("diffview").setup {}
     end,
