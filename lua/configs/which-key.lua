@@ -5,13 +5,7 @@ wk.register({
     name = "Buffer",
     o = {
       function()
-        local bufs = vim.api.nvim_list_bufs()
-        local current_buf = vim.api.nvim_get_current_buf()
-        for _, i in ipairs(bufs) do
-          if i ~= current_buf then
-            vim.api.nvim_buf_delete(i, {})
-          end
-        end
+        vim.cmd "silent! %bd|e#|bd#"
 
         require("nvim-tree.api").tree.toggle { focus = false, find_file = true }
       end,
